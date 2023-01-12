@@ -1,0 +1,22 @@
+name: Run flake8
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+   branches:
+    - main
+    - dev
+  workflow_dispatch:
+
+jobs:
+  flake8:
+    name: flake8
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          pip install flake8
+          python3 -m flake8 .
